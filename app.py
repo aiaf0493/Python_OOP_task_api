@@ -2,10 +2,12 @@ from flask import Flask, jsonify, request
 from repositories.memory import InMemoryRepository
 from handlers.task_list import TaskListHandler
 from handlers.task_detail import TaskDetailHandler
-
+from repositories.file import  FileRepository
 app = Flask(__name__)
 
-repo = InMemoryRepository()
+#repo = InMemoryRepository()
+repo = FileRepository("tasks.json")
+
 list_handler = TaskListHandler(repo)
 detail_handler = TaskDetailHandler(repo)
 
